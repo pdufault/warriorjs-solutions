@@ -5,14 +5,16 @@ class Player {
   }
 
   isSomeOneThere(warrior) {
-    return warrior.feel().isEmpty()
+    return !warrior.feel().isEmpty()
   }
 
   playTurn(warrior) {
-    if (this.isSomeoneThere()) {
+    if (this.isSomeOneThere(warrior)) {
       warrior.attack()
-    else if (this.amIHurt(warrior)) {
+    } else if (this.amIHurt(warrior)) {
       warrior.rest()
+    } else {
+      warrior.walk()
     }
   }
 }
