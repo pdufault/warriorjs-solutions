@@ -2,8 +2,8 @@
 
 ```
 Success! You have found the stairs.
-Warrior Score: 78
-Time Bonus: 14
-Clear Bonus: 18
-Total Score: 175 + 110 = 285
+Warrior Score: 38
+Time Bonus: 22
+Clear Bonus: 0
+Total Score: 285 + 60 = 345
 ```

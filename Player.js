@@ -5,28 +5,42 @@ class Player {
   }
 
   amIHurt(warrior) {
-    return warrior.health() < 20
-  }
-
-  isSomeOneThere(warrior) {
-    return warrior.feel().isEmpty()
+    return Boolean(warrior.health() < 20)
   }
 
   amITakingDamage(warrior) {
     return this.health > warrior.health()
   }
 
-  playTurn(warrior) {
-    if (!this.isSomeOneThere(warrior)) {
-      if (warrior.feel().isCaptive()) { 
-        warrior.rescue()
+  amIReallyHurt(warrior) {
+    return warrior.health() < 10
+  }
+
+  rescueAndAttack(warrior, direction='forward') {
+    if (!warrior.feel(direction).isEmpty()) {
+      if (warrior.feel(direction).isCaptive()) { 
+        warrior.rescue(direction)
       } else {
-        warrior.attack()
+        warrior.attack(direction)
       }
+    }
+  }
+
+  playTurn(warrior) {
+    if (!warrior.feel('backward').isEmpty()) {
+      this.rescueAndAttack(warrior, 'backward')
+    } else if (!warrior.feel().isEmpty()) {
+      this.rescueAndAttack(warrior)
     } else if (this.amITakingDamage(warrior)) {
-      warrior.walk()
+      if (this.amIReallyHurt(warrior)) {
+        warrior.walk('backward')
+      } else {
+        warrior.walk()
+      }
     } else if (this.amIHurt(warrior)) {
       warrior.rest()
+    } else if (warrior.feel().isWall()) {
+      warrior.pivot()
     } else {
       warrior.walk()
     }
