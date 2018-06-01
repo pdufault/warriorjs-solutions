@@ -6,5 +6,4 @@ class Player {
       warrior.attack()
     }
   }
-  }
 }
