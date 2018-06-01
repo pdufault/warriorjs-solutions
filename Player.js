@@ -18,7 +18,11 @@ class Player {
 
   playTurn(warrior) {
     if (!this.isSomeOneThere(warrior)) {
-      warrior.attack()
+      if (warrior.feel().isCaptive()) { 
+        warrior.rescue()
+      } else {
+        warrior.attack()
+      }
     } else if (this.amITakingDamage(warrior)) {
       warrior.walk()
     } else if (this.amIHurt(warrior)) {
