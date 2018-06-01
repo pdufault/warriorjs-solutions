@@ -1,17 +1,19 @@
-Level 3
+Level 5
 
-The air feels thicker than before. There must be a horde of sludge.
+You hear cries for help. Captives must need rescuing.
 
-Tip: Be careful not to die! Use `warrior.health()` to keep an eye on your health, and `warrior.rest()` to earn 10% of max health back.
+Tip: Use `warrior.feel().isCaptive()` to see if there is a captive and `warrior.rescue()` to rescue him. Don't attack captives.
 
 
-╔═════════╗
-║@ s ss s>║
-╚═════════╝
+╔═══════╗
+║@ CaaSC║
+╚═══════╝
 
   > = stairs
   @ = KungFuPanda
-  s = sludge
+  a = archer
+  S = thickSludge
+  C = captive
 
 
 Warrior abilities:
@@ -22,9 +24,11 @@ Warrior abilities:
 
   warrior.feel()
 
-  warrior.health() (NEW!)
+  warrior.health()
 
-  warrior.rest() (NEW!)
+  warrior.rest()
+
+  warrior.rescue() (NEW!)
 
 
 When you're done editing Player.js, run the warriorjs command again.
