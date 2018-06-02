@@ -31,14 +31,18 @@ class Player {
     }
   }
 
+  isSomeoneThere(warrior, direction='forward') {
+    return !warrior.feel(direction).isEmpty() && !warrior.feel(direction).isWall()
+  }
+
   playTurn(warrior) {
     if (this.isEnemyInSight(warrior, 'backward')) {
       warrior.shoot('backward')
     } else if (this.isEnemyInSight(warrior)) {
       warrior.shoot()
-    } else if (!warrior.feel('backward').isEmpty() && !warrior.feel('backward').isWall()) {
+    } else if (this.isSomeoneThere(warrior, 'backward')) {
       this.rescueAndAttack(warrior, 'backward')
-    } else if (!warrior.feel().isEmpty() && !warrior.feel().isWall()) {
+    } else if (this.isSomeoneThere(warrior)) {
       this.rescueAndAttack(warrior)
     } else if (this.amITakingDamage(warrior)) {
       if (this.amIReallyHurt(warrior)) {

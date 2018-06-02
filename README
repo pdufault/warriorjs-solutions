@@ -1,18 +1,19 @@
-Level 5
+Level 9
 
-You hear cries for help. Captives must need rescuing.
+Time to hone your skills and apply all of the abilities that you have learned.
 
-Tip: Use `warrior.feel().isCaptive()` to see if there is a captive and `warrior.rescue()` to rescue him. Don't attack captives.
+Tip: Watch your back.
 
 
-╔═══════╗
-║@ CaaSC║
-╚═══════╝
+╔═══════════╗
+║>Ca  @ S wC║
+╚═══════════╝
 
   > = stairs
   @ = KungFuPanda
   a = archer
   S = thickSludge
+  w = wizard
   C = captive
 
 
@@ -28,7 +29,13 @@ Warrior abilities:
 
   warrior.rest()
 
-  warrior.rescue() (NEW!)
+  warrior.rescue()
+
+  warrior.pivot()
+
+  warrior.look()
+
+  warrior.shoot()
 
 
 When you're done editing Player.js, run the warriorjs command again.
