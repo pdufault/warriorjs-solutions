@@ -27,9 +27,9 @@ class Player {
   }
 
   playTurn(warrior) {
-    if (!warrior.feel('backward').isEmpty()) {
+    if (!warrior.feel('backward').isEmpty() && !warrior.feel('backward').isWall()) {
       this.rescueAndAttack(warrior, 'backward')
-    } else if (!warrior.feel().isEmpty()) {
+    } else if (!warrior.feel().isEmpty() && !warrior.feel().isWall()) {
       this.rescueAndAttack(warrior)
     } else if (this.amITakingDamage(warrior)) {
       if (this.amIReallyHurt(warrior)) {
