@@ -9,6 +9,11 @@ class Player {
     return view && view.isEnemy()
   }
 
+  isCaptiveInSight(warrior, direction='forward') {
+    let view = warrior.look(direction).find(space => !space.isEmpty())
+    return view && view.isCaptive()
+  }
+
   amIHurt(warrior) {
     return Boolean(warrior.health() < 20)
   }
@@ -54,6 +59,8 @@ class Player {
       warrior.rest()
     } else if (warrior.feel().isWall()) {
       warrior.pivot()
+    } else if (this.isCaptiveInSight(warrior, 'backward')) {
+      warrior.walk('backward')
     } else {
       warrior.walk()
     }
