@@ -1,9 +1,9 @@
 # Success
 
 ```
-Success! You have found the stairs.
-Warrior Score: 26
-Time Bonus: 12
-Clear Bonus: 8
-Total Score: 385 + 46 = 431
+CONGRATULATIONS! You have climbed to the top of the tower.
+Warrior Score: 74
+Time Bonus: 7
+Clear Bonus: 16
+Total Score: 431 + 97 = 528
 ```

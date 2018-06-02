@@ -4,16 +4,21 @@ class Player {
     this.health = 20
   }
 
+  isEnemyInSight(warrior, direction='forward') {
+    let view = warrior.look(direction).find(space => !space.isEmpty())
+    return view && view.isEnemy()
+  }
+
   amIHurt(warrior) {
     return Boolean(warrior.health() < 20)
   }
 
-  amITakingDamage(warrior) {
-    return this.health > warrior.health()
-  }
-
   amIReallyHurt(warrior) {
     return warrior.health() < 10
+  }
+
+  amITakingDamage(warrior) {
+    return this.health > warrior.health()
   }
 
   rescueAndAttack(warrior, direction='forward') {
@@ -26,13 +31,10 @@ class Player {
     }
   }
 
-  isEnemyInSight(warrior, direction='forward') {
-    let view = warrior.look(direction).find(space => !space.isEmpty())
-    return view && view.isEnemy()
-  }
-
   playTurn(warrior) {
-    if (this.isEnemyInSight(warrior)) {
+    if (this.isEnemyInSight(warrior, 'backward')) {
+      warrior.shoot('backward')
+    } else if (this.isEnemyInSight(warrior)) {
       warrior.shoot()
     } else if (!warrior.feel('backward').isEmpty() && !warrior.feel('backward').isWall()) {
       this.rescueAndAttack(warrior, 'backward')
